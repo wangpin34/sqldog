@@ -1,0 +1,23 @@
+{
+  "name": "sqldog",
+  "version": "0.0.0",
+  "description": "watch sql files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "sqldog": "index.js"
+  },
+  "keywords": [
+    "watch",
+    "sql"
+  ],
+  "dependencies": {
+    "prompt": "~0.2.14"
+  },
+  "author": "guyu",
+  "license": "MIT"
+}

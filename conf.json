@@ -1,0 +1,9 @@
+{
+  "db": {
+    "type": "mysql",
+    "host": "192.168.56.50",
+    "port": 3306,
+    "user": "portaldbuser",
+    "password": "portaldbpw"
+  }
+}
