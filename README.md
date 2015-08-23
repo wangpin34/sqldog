@@ -11,7 +11,6 @@ Current it's only support Mysql.
 
 ```
 npm install -g sqldog
-
 ```
 
 ### General commands
