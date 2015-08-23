@@ -42,17 +42,23 @@ exports.getStatus = function() {
 	var uexnum = 0;
 	var exnum = 0;
 	var tnum = allSqlfiles.length;
+	var unexecfile = [];
 	for (var x in allSqlfiles) {
 		if (allSqlfiles[x].executed) {
 			exnum++;
 		} else {
 			uexnum++;
+			unexecfile.push(allSqlfiles[x].name);
 		}
 	}
 	console.log("\n >>> \n");
 	console.log('total sql files: ' + tnum + '\n');
 	console.log('executed sql files: ' + exnum + '\n');
 	console.log('un executed sql files: ' + uexnum + '\n');
+	for(var x in unexecfile){
+		console.log('                      ' + unexecfile[x] + '\n');
+	}
+	
 }
 
 
