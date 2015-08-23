@@ -34,7 +34,7 @@ function routing(cmdstr){
 		}
 	}
 
-	return null;
+	return {action:'',param:''};
 }
 
 
@@ -61,7 +61,7 @@ exports.handle = function(cmd) {
 			actions.getStatus();
 			break;
 		default:
-			throw 'unsupported command ' + action;
+			throw 'Not recognized command: ' + cmdstr;
 	}
 	
 }
