@@ -7,6 +7,8 @@ Current it's only support Mysql.
 
 ### Install
 
+[sqldog](https://www.npmjs.com/package/sqldog) on npm already.
+
 ```
 npm install -g sqldog
 
