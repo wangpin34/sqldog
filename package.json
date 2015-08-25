@@ -1,6 +1,6 @@
 {
   "name": "sqldog",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "watch sql files",
   "main": "index.js",
   "scripts": {
