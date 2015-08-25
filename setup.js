@@ -31,7 +31,7 @@ exports.init = function(dir) {
 }
 
 
-exports.setDB = function() {
+exports.config = function() {
 
 	var conf = data.getConf();
 
@@ -72,13 +72,15 @@ exports.setDB = function() {
 
 	prompt.get(schema, function(err, result) {
 
-		conf.db.host = result.host;
-		conf.db.port = result.port;
-		conf.db.user = result.user;
-		conf.db.password = result.password;
+		if(result){
+			conf.db.host = result.host ? result.host : conf.db.host;
+			conf.db.port = result.port ? result.port : conf.db.host;
+			conf.db.user = result.user ? result.user : conf.db.host;
+			conf.db.password = result.password ? result.password : conf.db.password;
 
-		//save db conf
-		data.setConf(conf);
+			//save db conf
+			data.setConf(conf);
+		}
 
 	});
 }

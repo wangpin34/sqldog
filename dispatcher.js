@@ -2,6 +2,7 @@ var actions = require('./actions');
 
 
 const INIT = 'init';
+const CONFIG = 'config';
 const EXEC = 'ex';
 const EXEC_F = 'exf';
 const STATUS = 'st';
@@ -9,6 +10,7 @@ const UPDATE = 'up';
 
 //command pattern
 var init = /^init$/,
+	config = /^config$/,
 	exec = /^exec ([\d\D]+.sql)$/,
 	exec_f = /^exec -f ([\d\D]+.sql)$/,
 	status = /^status$/,
@@ -16,6 +18,7 @@ var init = /^init$/,
 
 var routes = [
 	{pattern:init,action:INIT},
+	{pattern:config,action:CONFIG},
 	{pattern:exec,action:EXEC},
 	{pattern:exec_f,action:EXEC_F},
 	{pattern:status,action:STATUS},
@@ -47,6 +50,9 @@ exports.handle = function(cmd) {
 	switch (route.action) {
 		case INIT:
 			actions.init();
+			break;
+		case CONFIG:
+			actions.config();
 			break;
 		case EXEC:
 			actions.execute(route.param);

@@ -36,6 +36,10 @@ exports.init = function() {
 	setup.init();
 }
 
+exports.config = function (){
+	setup.config();
+}
+
 
 exports.getStatus = function() {
 	var allSqlfiles = data.getSqlfiles();
