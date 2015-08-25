@@ -2,7 +2,7 @@ var path = require('path');
 var ft = require('./fileutils');
 
 //data file localcation
-const CONF = './conf.json'; // store global conf constains db config
+const CONF = path.join(path.dirname(process.argv[1]),'./conf.json') ; // store global config
 const STATUS = path.join(process.cwd(), '.status'); // store sql status of current sqldog dir
 
 var data = {};
