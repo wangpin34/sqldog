@@ -12,11 +12,23 @@ Current it's only support Mysql.
 ```
 npm install -g sqldog
 ```
+Install sqldog globally so that it can be used on commandline anywhere.
 
-### General commands
+### Usage
 * Initialize current dir as a sql dog watched dir
 ```
 sqldog init
+```
+* Config options
+```
+sqldog config
+```
+Currently, db options can be configed here by the command.
+```
+prompt: Database Host:  (locahost)
+prompt: Database Port:  (3306)
+prompt: Username:  (root)
+prompt: Password:
 ```
   
 * Execute a sql file. If this file was executed by sqldog previously, this action will be rejected ad you will get a message.
