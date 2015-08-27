@@ -1,13 +1,10 @@
 # sqldog
-Keep aware of the sql file is executed or not.
 
 When develop project which depends on databases at your local machine, sometimes there are sqlfiles come from others or version control system like git and svn. Sqldog could help to manage this sql files. It can remember whether the file is executed or not. And it's convenient to use sqldog for executing sql files you want.  
 
 Current it's only support Mysql. And it depends on [mysql command line](http://dev.mysql.com/doc/refman/5.6/en/mysql.html).
 
 ### Install
-
-[sqldog](https://www.npmjs.com/package/sqldog) on npm already.
 
 ```
 npm install -g sqldog
@@ -45,8 +42,10 @@ sqldog exec -f sql_file_name
 ```
 sqldog status
 ```
-  
-
+* Patrol around here to detect un tracked files,and disapperd files
+```
+sqldog patrol
+```
 
 ### License
 MIT
