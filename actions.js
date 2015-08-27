@@ -1,5 +1,6 @@
 var child_process = require('child_process');
 var util = require('util');
+var _ = require('underscore');
 
 
 var setup = require('./setup');
@@ -62,7 +63,7 @@ exports.getStatus = function() {
 }
 
 
-exports.execute = function(file) {
+exports.execute = function(file,force) {
 	
 	var sqlfiles = [];
 
@@ -78,7 +79,7 @@ exports.execute = function(file) {
 	}
 
 
-	if (data.isExecuted(file)) throw file + ' is also executed. \nBut you can still execute it using : sqldog ex -f ' + file;
+	if (data.isExecuted(file) && !force) throw file + ' is also executed. \nBut you can still execute it using : sqldog ex -f ' + file;
 
 	executeSqlFile(file, function(err) {
 		if (err) throw 'Error occuard when executed sql ' + file;
@@ -87,10 +88,58 @@ exports.execute = function(file) {
 			var name = sqlfiles[x].name;
 			if (name === file) {
 				sqlfiles[x].executed = true;
-				break
+				break;
 			}
 		}
 		data.setSqlfiles(sqlfiles);
 	});
+
+}
+
+
+/**
+ * Detect files, and sync them with tracked files
+ */
+exports.walk = function(){
+	var untracked = [],
+		removed = [],
+		exists = [],
+		trackeds = data.getSqlfilemap(),
+		sqlfiles = data.listSqlfiles();
+
+
+
+	_.each(trackeds,function(tracked,index,list){
+
+		if(_.indexOf(sqlfiles,tracked) === -1){
+			removed.push(tracked);
+		}
+
+	});
+
+
+	_.each(sqlfiles,function(sqlfile,index,list){
+
+		if(_.indexOf(trackeds,sqlfile) === -1){
+			untracked.push(sqlfile);
+		}
+
+	});
+
+	if(removed.length>0){
+		console.log(removed.join() + " removed!");
+		data.untrackSqlfiles(removed);
+	}	
+
+	if(untracked.length>0){
+		console.log(untracked.join() + " untracked!");
+		data.trackSqlfiles(untracked);
+	}
+
+	if(removed.length == 0 && untracked.length == 0){
+		console.log('\nNothing strange found, my master.');
+	}
+
+	data.setSqlfilemap(sqlfiles);	
 
 }

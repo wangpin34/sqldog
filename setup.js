@@ -13,9 +13,10 @@ exports.init = function(dir) {
 
 	var sqlfiles = data.listSqlfiles();
 	var status = {
-		sqlfiles: []
+		sqlfiles: [],
+		sqlfilemap:sqlfiles
 	};
-
+	
 	for (var x in sqlfiles) {
 		var pathname = sqlfiles[x],
 			name = pathname.replace(cwd + sep, '');

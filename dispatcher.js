@@ -6,20 +6,23 @@ const CONFIG = 'config';
 const EXEC = 'ex';
 const EXEC_F = 'exf';
 const STATUS = 'st';
+const WALK = 'walk';
 
 //command pattern
 var init = /^init$/,
 	config = /^config$/,
 	exec = /^exec ([\d\D]+.sql)$/,
 	exec_f = /^exec -f ([\d\D]+.sql)$/,
-	status = /^status$/;
+	status = /^status$/,
+	walk = /^walk$/;
 
 var routes = [
 	{pattern:init,action:INIT},
 	{pattern:config,action:CONFIG},
 	{pattern:exec,action:EXEC},
 	{pattern:exec_f,action:EXEC_F},
-	{pattern:status,action:STATUS}
+	{pattern:status,action:STATUS},
+	{pattern:walk,action:WALK}
 ];
 
 
@@ -55,10 +58,13 @@ exports.handle = function(cmd) {
 			actions.execute(route.param);
 			break;
 		case EXEC_F:
-			actions.executeforce(route.param);
+			actions.execute(route.param,true);
 			break;
 		case STATUS:
 			actions.getStatus();
+			break;
+		case WALK:
+			actions.walk();
 			break;
 		default:
 			throw 'Not recognized command: ' + cmdstr;

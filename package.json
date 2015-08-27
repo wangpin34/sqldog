@@ -16,12 +16,13 @@
     "sql"
   ],
   "dependencies": {
-    "prompt": "~0.2.14"
+    "prompt": "~0.2.14",
+    "underscore": "^1.8.3"
   },
   "author": "guyu",
   "license": "MIT",
   "repository": {
-   "type": "git",
-   "url": "git@github.com:wangpin34/sqldog.git"
+    "type": "git",
+    "url": "git@github.com:wangpin34/sqldog.git"
   }
 }

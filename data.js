@@ -1,5 +1,8 @@
 var path = require('path');
+var _ = require('underscore');
+
 var ft = require('./fileutils');
+
 
 //data file localcation
 const CONF = path.join(path.dirname(process.argv[1]),'./conf.json') ; // store global config
@@ -10,9 +13,14 @@ var data = {};
 data.conf = require(CONF);
 data.status = ft.readFile(STATUS, {});
 data.status = data.status != null ? data.status : {
-	sqlfiles: []
+	sqlfiles: [],
+	sqlfilemap: []
 };
 
+
+function updateStatus(){
+	ft.updateFile(data.status, STATUS)
+}
 
 function isSqlfileWatched (sqlfile){
 	var sqlfiles = data.status.sqlfiles;
@@ -43,7 +51,7 @@ exports.getStatus = function() {
 
 exports.setStatus = function(status) {
 	data.status = status;
-	ft.updateFile(data.status, STATUS)
+	updateStatus();
 }
 
 exports.getSqlfiles = function() {
@@ -52,7 +60,40 @@ exports.getSqlfiles = function() {
 
 exports.setSqlfiles = function(sqlfiles) {
 	data.status.sqlfiles = sqlfiles;
-	ft.updateFile(data.status, STATUS);
+	updateStatus();
+}
+
+exports.getSqlfilemap = function(){
+	return data.status.sqlfilemap;
+}
+
+exports.setSqlfilemap = function(sqlfilemap){
+
+	data.status.sqlfilemap = sqlfilemap;
+
+	updateStatus();
+}
+
+exports.untrackSqlfiles = function(files){
+	var sqlfiles = data.status.sqlfiles;
+	for(var x in files){
+		for(var y in sqlfiles){
+			if(files[x] === sqlfiles[y].path){
+				sqlfiles.splice(y,1);
+			}
+		}
+		
+	}
+	updateStatus();
+}
+
+exports.trackSqlfiles = function(files){
+	var sqlfiles = data.status.sqlfiles;
+	for(var x in files){
+		var fileObj = exports.createSqlfileObj(files[x]);
+		sqlfiles.push(fileObj);
+	}
+	updateStatus();
 }
 
 //list sql files in current work dir
@@ -82,7 +123,7 @@ exports.createSqlfileObj = function(file) {
 	var obj = ft.parse(file);
 	return {
 		name: obj.filename,
-		path: obj.pathname,
+		path: obj.fullpath,
 		executed: false
 	}
 }

@@ -66,14 +66,13 @@ exports.isFileExist = function(pathname){
 
 exports.parse = function(pathname){
     var filename = '',
-        dirname = '';
+        fullpath = '';
     if(path.isAbsolute(pathname)){
-        filename = path.basename(pathname);
-        dirname = path.dir(pathname);
+        filename = pathname.replace(process.cwd() + path.sep,'');
+        fullpath = pathname;
     }else{
         filename = pathname;
-        dirname = process.cwd();
+        fullpath = path.join(process.cwd(),filename);
     }
-
-    return {filename:filename,dirname:dirname}
+    return {filename:filename,fullpath:fullpath}
 }

@@ -42,9 +42,9 @@ sqldog exec -f sql_file_name
 ```
 sqldog status
 ```
-* Patrol around here to detect un tracked files,and disapperd files
+* Sqldog walks around here and there to detect not tracked files, and removed files
 ```
-sqldog patrol
+sqldog walk
 ```
 
 ### License
