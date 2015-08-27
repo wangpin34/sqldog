@@ -6,23 +6,20 @@ const CONFIG = 'config';
 const EXEC = 'ex';
 const EXEC_F = 'exf';
 const STATUS = 'st';
-const UPDATE = 'up';
 
 //command pattern
 var init = /^init$/,
 	config = /^config$/,
 	exec = /^exec ([\d\D]+.sql)$/,
 	exec_f = /^exec -f ([\d\D]+.sql)$/,
-	status = /^status$/,
-	update = /^update$/;
+	status = /^status$/;
 
 var routes = [
 	{pattern:init,action:INIT},
 	{pattern:config,action:CONFIG},
 	{pattern:exec,action:EXEC},
 	{pattern:exec_f,action:EXEC_F},
-	{pattern:status,action:STATUS},
-	{pattern:update,action:UPDATE}
+	{pattern:status,action:STATUS}
 ];
 
 
@@ -59,9 +56,6 @@ exports.handle = function(cmd) {
 			break;
 		case EXEC_F:
 			actions.executeforce(route.param);
-			break;
-		case UPDATE:
-			actions.update();
 			break;
 		case STATUS:
 			actions.getStatus();

@@ -28,10 +28,6 @@ function executeSqlFile(file, callback) {
 
 }
 
-function update(){
-	var sqlfiles = data.listSqlfiles();
-}
-
 exports.init = function() {
 	setup.init();
 }
@@ -98,5 +94,3 @@ exports.execute = function(file) {
 	});
 
 }
-
-exports.update = update;
