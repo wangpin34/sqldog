@@ -33,6 +33,10 @@ exports.init = function() {
 	setup.init();
 }
 
+exports.initse = function() {
+	setup.init(true);
+}
+
 exports.config = function (){
 	setup.config();
 }
