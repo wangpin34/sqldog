@@ -2,6 +2,7 @@ var actions = require('./actions');
 
 
 const INIT = 'init';
+const INIT_SE = 'init_se';
 const CONFIG = 'config';
 const EXEC = 'ex';
 const EXEC_F = 'exf';
@@ -10,6 +11,7 @@ const WALK = 'walk';
 
 //command pattern
 var init = /^init$/,
+	init_se = /^init -se$/,
 	config = /^config$/,
 	exec = /^exec ([\d\D]+.sql)$/,
 	exec_f = /^exec -f ([\d\D]+.sql)$/,
@@ -18,6 +20,7 @@ var init = /^init$/,
 
 var routes = [
 	{pattern:init,action:INIT},
+	{pattern:init_se,action:INIT_SE},
 	{pattern:config,action:CONFIG},
 	{pattern:exec,action:EXEC},
 	{pattern:exec_f,action:EXEC_F},
@@ -50,6 +53,9 @@ exports.handle = function(cmd) {
 	switch (route.action) {
 		case INIT:
 			actions.init();
+			break;
+		case INIT_SE:
+			actions.initse();
 			break;
 		case CONFIG:
 			actions.config();

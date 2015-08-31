@@ -16,6 +16,12 @@ Install sqldog globally so that it can be used on commandline anywhere.
 ```
 sqldog init
 ```
+Some files are executed before and it's ok to ***set*** them as ***executed*** state within initialization.
+
+```
+sqldog init -se
+```
+
 * Config options
 ```
 sqldog config
@@ -42,7 +48,7 @@ sqldog exec -f sql_file_name
 ```
 sqldog status
 ```
-* Sqldog walks around here and there to detect not tracked files, and removed files
+* Sqldog ***walks*** around here and there to detect not tracked files, and removed files
 ```
 sqldog walk
 ```

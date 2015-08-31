@@ -5,10 +5,12 @@ var data = require('./data');
 var cwd = process.cwd();
 var sep = path.sep;
 
-exports.init = function(dir) {
+const SQL_ST_DEFAULT = false;
+
+exports.init = function(sqlStatus) {
 
 	if(data.isInit()){
-		throw 'Master, it is initialized previously.';
+		throw 'Master, it is initialized already previously.';
 	}
 
 	var sqlfiles = data.listSqlfiles();
@@ -17,13 +19,15 @@ exports.init = function(dir) {
 		sqlfilemap:sqlfiles
 	};
 	
+	if(!sqlStatus) sqlStatus = SQL_ST_DEFAULT;
+
 	for (var x in sqlfiles) {
 		var pathname = sqlfiles[x],
 			name = pathname.replace(cwd + sep, '');
 		status.sqlfiles.push({
 			name: name,
 			path: pathname,
-			executed: false
+			executed: sqlStatus
 		});
 	}
 
