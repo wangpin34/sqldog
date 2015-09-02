@@ -1,0 +1,6 @@
+node_modules
+sql4test
+test
+.gitignore
+.status
+.npmignore
