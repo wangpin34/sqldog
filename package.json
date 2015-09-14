@@ -4,7 +4,7 @@
   "description": "watch sql files",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
+    "test": "./node_modules/.bin/mocha -b ./test/spec",
     "start": "node index.js"
   },
   "preferGlobal": true,
