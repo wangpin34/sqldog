@@ -4,7 +4,7 @@
   "description": "watch sql files",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "./node_modules/.bin/mocha",
     "start": "node index.js"
   },
   "preferGlobal": true,
@@ -25,10 +25,11 @@
     "type": "git",
     "url": "git@github.com:wangpin34/sqldog.git"
   },
-   "bugs": {
+  "bugs": {
     "url": "https://github.com/wangpin34/sqldog/issues"
   },
   "devDependencies": {
+    "mocha": "^2.3.2",
     "travis-cov": "^0.2.5"
   }
 }
