@@ -25,6 +25,9 @@
     "type": "git",
     "url": "git@github.com:wangpin34/sqldog.git"
   },
+   "bugs": {
+    "url": "https://github.com/wangpin34/sqldog/issues"
+  },
   "devDependencies": {
     "travis-cov": "^0.2.5"
   }

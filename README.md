@@ -4,6 +4,8 @@ When develop project which depends on databases at your local machine, sometimes
 
 Current it's only support Mysql. And it depends on [mysql command line](http://dev.mysql.com/doc/refman/5.6/en/mysql.html).
 
+[![Build Status](https://travis-ci.org/wangpin34/sqldog.svg)](https://travis-ci.org/wangpin34/sqldog)
+
 ### Install
 
 ```
