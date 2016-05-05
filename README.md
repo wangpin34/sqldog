@@ -6,6 +6,10 @@ Current it's only support Mysql. And it depends on [mysql command line](http://d
 
 [![Build Status](https://travis-ci.org/wangpin34/sqldog.svg)](https://travis-ci.org/wangpin34/sqldog)
 
+[![Circle CI](https://circleci.com/gh/driftyco/sqldog.svg?style=svg)](https://circleci.com/gh/driftyco/sqldog)
+
+[![NPM](https://nodei.co/npm/sqldog.png?stars&downloads)](https://nodei.co/npm/sqldog/)
+
 ### Install
 
 ```
